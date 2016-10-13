@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import example.tce.it.cloud.fileUtils.MyFileReader;
 import example.tce.it.utils.SimpleServerProperties;
 
 public class MultipleSocketServer implements Runnable {
@@ -53,15 +54,18 @@ public class MultipleSocketServer implements Runnable {
 			System.out.println(process);
 			// need to wait 10 seconds to pretend that we're processing
 			// something
+			process = new StringBuffer();
 			try {
 				Thread.sleep(10000);
 			} catch (Exception e) {
 			}
-			TimeStamp = new java.util.Date().toString();
-			String returnCode = "MultipleSocketServer repsonded at " + TimeStamp + (char) 13;
 			BufferedOutputStream os = new BufferedOutputStream(connection.getOutputStream());
 			OutputStreamWriter osw = new OutputStreamWriter(os, "US-ASCII");
-			osw.write(returnCode);
+			TimeStamp = new java.util.Date().toString();
+			StringBuilder returnCode = new StringBuilder();
+			returnCode.append(new MyFileReader("resources/login.html").readFileContent());
+			System.out.println(returnCode);
+			osw.write(returnCode.toString());
 			osw.flush();
 		} catch (Exception e) {
 			System.out.println(e);
