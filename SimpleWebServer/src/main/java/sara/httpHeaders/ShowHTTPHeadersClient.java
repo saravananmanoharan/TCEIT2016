@@ -5,7 +5,7 @@ import java.net.URLConnection;
 import java.util.List;
 import java.util.Map;
 
-public class ShowHTTPHeaders {
+public class ShowHTTPHeadersClient {
 
 	public static void main(String[] args) {
 		try {
