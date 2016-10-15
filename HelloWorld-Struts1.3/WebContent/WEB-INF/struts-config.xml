@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="helloWorldForm" type="edu.tce.it.form.HelloWorldForm" />
+	</form-beans>
+
+	<global-exceptions>
+		<exception key="error.global.mesage" type="java.io.IOException"
+			path="/pages/error.jsp" />
+	</global-exceptions>
+
+	<global-forwards>
+		<forward name="helloWorld" path="/helloWorld.do" />
+	</global-forwards>
+
+
+	<action-mappings>
+		<action path="/helloWorld" type="edu.tce.it.action.HelloWorldAction" name="helloWorldForm" scope="request">
+			<forward name="success" path="/HelloWorld.jsp" />
+		</action>
+	</action-mappings>
+
+</struts-config>
