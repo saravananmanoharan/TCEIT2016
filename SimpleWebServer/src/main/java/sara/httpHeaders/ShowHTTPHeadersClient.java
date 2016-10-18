@@ -10,7 +10,7 @@ public class ShowHTTPHeadersClient {
 	public static void main(String[] args) {
 		try {
 
-			URL obj = new URL("http://localhost:9191/sample.html");
+			URL obj = new URL("http://localhost:9191");
 			URLConnection conn = obj.openConnection();
 			Map<String, List<String>> map = conn.getHeaderFields();
 
